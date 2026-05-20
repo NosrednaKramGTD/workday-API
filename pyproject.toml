@@ -5,7 +5,10 @@
  readme = "README.md"
  requires-python = ">=3.14"
  license = { text = "MIT" }
- authors = [{ name = "Your Team" }]
+ authors = [
+  { name = "Mark Anderson" },
+  { name = "Western Colorado University" },
+]
  dependencies = [
    # Upstream async RaaS client (Git dependency until published on PyPI).
    "workday-raas-client @ git+https://github.com/NosrednaKramGTD/workday-raas-client@main",
