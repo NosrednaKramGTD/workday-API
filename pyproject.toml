@@ -1,0 +1,50 @@
+ [project]
+ name = "workday-api"
+ version = "0.1.0"
+ description = "Opinionated Python helpers for Workday APIs (RaaS-first), built on workday-raas-client."
+ readme = "README.md"
+ requires-python = ">=3.14"
+ license = { text = "MIT" }
+ authors = [{ name = "Your Team" }]
+ dependencies = [
+   # Upstream async RaaS client (Git dependency until published on PyPI).
+   "workday-raas-client @ git+https://github.com/NosrednaKramGTD/workday-raas-client@main",
+   "httpx>=0.27",
+  "python-dotenv>=1.0",
+  # Git dependency until published on PyPI.
+  "app-secrets @ git+https://github.com/NosrednaKramGTD/app-secrets@main",
+ ]
+ 
+ [project.optional-dependencies]
+ storage = [
+  # Enables stream-to-storage via the upstream client's storage extra.
+  "workday-raas-client[storage] @ git+https://github.com/NosrednaKramGTD/workday-raas-client@main",
+ ]
+ dev = [
+   "pytest>=8.0",
+   "pytest-asyncio>=0.23",
+   "ruff>=0.5",
+ ]
+ 
+ [build-system]
+ requires = ["hatchling>=1.24"]
+ build-backend = "hatchling.build"
+ 
+[tool.hatch.metadata]
+allow-direct-references = true
+
+ [tool.hatch.build.targets.wheel]
+ packages = ["src/workday_api"]
+ 
+ [tool.pytest.ini_options]
+ asyncio_mode = "auto"
+markers = [
+  "integration: end-to-end tests that require real Workday endpoints/credentials",
+]
+ 
+ [tool.ruff]
+ line-length = 100
+ target-version = "py314"
+ 
+ [tool.ruff.lint]
+ select = ["E", "F", "I", "UP", "B"]

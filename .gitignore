@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Local secrets
+.env
+
+# Local secrets (json)
+secrets.workday.json
+secrets.*.json
+!secrets.*.json.example
